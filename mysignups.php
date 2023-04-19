@@ -48,7 +48,7 @@ $format = optional_param('format',       'ods', PARAM_ALPHA); // one of: ods, xl
 
 $userid = optional_param('userid', $USER->id, PARAM_INT);
 if (!$user = $DB->get_record('user', array('id' => $userid))) {
-    print_error('error:invaliduserid', 'block_facetoface', 'mysignups.php');
+    throw new moodle_exception('error:invaliduserid', 'block_facetoface', 'mysignups.php');
 }
 
 if ($userid != $USER->id) {

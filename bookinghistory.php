@@ -37,16 +37,16 @@ $userid     = optional_param('userid', $USER->id, PARAM_INT);
 
 // get all the required records
 if (!$user = $DB->get_record('user', array('id' => $userid))) {
-    print_error('error:invaliduserid', 'block_facetoface');
+    throw new moodle_exception('error:invaliduserid', 'block_facetoface');
 }
 if (!$session = facetoface_get_session($sid)) {
-    print_error('error:invalidsessionid', 'block_facetoface');
+    throw new moodle_exception('error:invalidsessionid', 'block_facetoface');
 }
 if (!$facetoface = $DB->get_record('facetoface', array('id' => $session->facetoface))) {
-    print_error('error:invalidfacetofaceid', 'block_facetoface');
+    throw new moodle_exception('error:invalidfacetofaceid', 'block_facetoface');
 }
 if (!$course = $DB->get_record('course', array('id' => $facetoface->course))) {
-    print_error('error:invalidcourseid', 'block_facetoface');
+    throw new moodle_exception('error:invalidcourseid', 'block_facetoface');
 }
 
 if ($userid != $USER->id) {
