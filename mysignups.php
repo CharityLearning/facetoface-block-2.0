@@ -95,7 +95,7 @@ if ($search) {
 // format the session and dates to only show one booking where they span multiple dates
 // i.e. multiple days startdate = firstday, finishdate = last day
 $groupeddates = array();
-if ($signups and count($signups > 0)) {
+if ($signups and count($signups) > 0) {
     $groupeddates = group_session_dates($signups);
 }
 
@@ -194,4 +194,3 @@ echo html_writer::end_tag('form');
 
 echo $OUTPUT->box_end();
 echo $OUTPUT->footer();
-
